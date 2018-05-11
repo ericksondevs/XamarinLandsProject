@@ -156,4 +156,7 @@
       <Name>LandsXamApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\drawable\onu.png" />
+  </ItemGroup>
 </Project>
