@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandsXamApp.Android", "Land
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandsXamApp.iOS", "LandsXamApp\LandsXamApp.iOS\LandsXamApp.iOS.csproj", "{80EE2A2D-593C-40BA-97FC-EB45C3483A70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandsXamApp", "LandsXamApp\LandsXamApp\LandsXamApp.csproj", "{3B8C5367-7E5F-4BA8-85FD-BAEF041C9998}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandsXamApp", "LandsXamApp\LandsXamApp\LandsXamApp.csproj", "{3B8C5367-7E5F-4BA8-85FD-BAEF041C9998}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

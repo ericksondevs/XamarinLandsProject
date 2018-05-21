@@ -9,11 +9,11 @@
             <!--<Label Text="Lands App"
                 FontAttributes="Bold"
                 FontSize="Large"
+                FontSize="Large"
                 VerticalOptions="Start" 
                 HorizontalOptions="Center" />-->
             <Image Source="onu" HeightRequest="80" WidthRequest="50"></Image>
                 <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" >
-                    
                     <Grid Margin="0,40,0,0" HorizontalOptions="CenterAndExpand">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
@@ -25,7 +25,6 @@
                         <Entry Text="{Binding Password,Mode=TwoWay}" Grid.Row="1" Grid.Column="1" IsPassword="True" Placeholder="Enter your password..."></Entry>
                         <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="Remember me"></Label>
                         <Switch IsToggled="{Binding IsRemembered, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"  HorizontalOptions="End"></Switch>
-                      
                     </Grid>
                 </StackLayout>
                 
@@ -39,9 +38,25 @@
                 
                 <StackLayout  VerticalOptions="CenterAndExpand" Padding="15" Orientation="Horizontal" >
 
-                <Button Command="{Binding LoginCommand}" BorderRadius="23" HeightRequest="46" Text="Login" HorizontalOptions="FillAndExpand" BackgroundColor="Navy" TextColor="White">
+                <Button 
+                    Command="{Binding LoginCommand}" 
+                    IsEnabled="{Binding isEnabled,Mode=TwoWay}"
+                    BorderRadius="23" 
+                    HeightRequest="46" 
+                    Text="Login" 
+                    HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="Navy" 
+                    TextColor="White">
                 </Button>
-                    <Button  Command="{Binding RegisterCommand}" BorderRadius="23" HeightRequest="46" Text="Register" HorizontalOptions="FillAndExpand" BackgroundColor="Green"  TextColor="White"></Button>
+                    <Button  
+                        Command="{Binding RegisterCommand}" 
+                        IsEnabled="{Binding isEnabled,Mode=TwoWay}"
+                        BorderRadius="23" 
+                        HeightRequest="46" 
+                        Text="Register" 
+                        HorizontalOptions="FillAndExpand" 
+                        BackgroundColor="Green"  
+                        TextColor="White"></Button>
             </StackLayout>
             <StackLayout  VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="Center">
                 <Image Margin="5" Source="facebook_logo" WidthRequest="80"  />

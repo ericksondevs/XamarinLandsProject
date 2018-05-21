@@ -1,28 +1,91 @@
 ﻿namespace LandsXamApp.ViewModels.Login
 {
+    using ViewModels.BaseViewModel;
     using GalaSoft.MvvmLight.Command;
-    using System;
+    using System.ComponentModel;
     using System.Windows.Input;
-    public class LoginViewModel
+    using Xamarin.Forms;
+
+    public class LoginViewModel : ViewModelBase
     {
+
+        #region Attributes
+        private string email;
+        private string password;
+        private bool isRunning;
+        private bool isEnabled;
+        #endregion
+
         #region Properties
         public string EmailorUsername { get; set; }
-        public string Password { get; set; }
-        public bool IsRunning { get; set; }
+        public string Password
+        {
+            get { return this.password; }
+            set { SetValue(ref password, value); }
+        }
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set { SetValue(ref this.isRunning, value); }
+        }
+        public bool IsEnabled
+        {
+            get { return this.isEnabled; }
+            set { SetValue(ref this.isEnabled, value); }
+        }
         public bool IsRemembered { get; set; }
         #endregion
 
         #region Commands
-        public ICommand LoginCommand {
+        public ICommand LoginCommand
+        {
             get
             {
                 return new RelayCommand(Login);
             }
         }
 
-        private void Login()
+        private async void Login()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(this.EmailorUsername))
+            {
+                
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Email or username is required",
+                    "Accept");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.Password))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Password is required",
+                    "Accept");
+                return;
+            }
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+            if (!this.EmailorUsername.Equals("erick@gmail.com") || this.Password.Equals("1234"))
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                                "Error",
+                                "Email/username or password incorrect.",
+                                "Accept");
+                this.Password = string.Empty;
+                return;
+            }
+
+            this.isRunning = false;
+            this.IsEnabled = true;
+            await Application.Current.MainPage.DisplayAlert(
+                             "Ok",
+                             "Fuck yeah!!.",
+                             "Accept");
         }
 
         public ICommand RegisterCommand { get; set; }
@@ -31,9 +94,8 @@
         public LoginViewModel()
         {
             this.IsRemembered = true;
-            this.EmailorUsername = "Funciona esta mierda";
+            this.isEnabled = true;
         }
         #endregion
-
     }
 }
