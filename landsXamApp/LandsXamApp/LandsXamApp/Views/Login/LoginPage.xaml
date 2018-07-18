@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LandsXamApp.Views.Login.LoginPage" Title="Lands"
+             x:Class="LandsXamApp.Views.Login.LoginPage" Title="Lands" NavigationPage.HasNavigationBar="False"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
         <ContentPage.Content>
         <ScrollView BindingContext="{Binding Login}">
@@ -20,7 +20,7 @@
                             <ColumnDefinition  Width="2*" />
                         </Grid.ColumnDefinitions>
                         <Label VerticalOptions="Center"  Grid.Row="0" Grid.Column="0" Text="E-mail or username"/>
-                        <Entry Text="{Binding EmailorUsername, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  Placeholder="Enter your email or Username..." Keyboard="Email"></Entry>
+                        <Entry Text="{Binding EmailorUsername, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  Placeholder="Email or Username..." Keyboard="Email"></Entry>
                         <Label VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Password"></Label>
                         <Entry Text="{Binding Password,Mode=TwoWay}" Grid.Row="1" Grid.Column="1" IsPassword="True" Placeholder="Enter your password..."></Entry>
                         <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="Remember me"></Label>

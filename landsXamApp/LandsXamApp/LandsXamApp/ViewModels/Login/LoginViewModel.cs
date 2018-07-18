@@ -5,7 +5,7 @@
     using System.ComponentModel;
     using System.Windows.Input;
     using Xamarin.Forms;
-
+  
     public class LoginViewModel : ViewModelBase
     {
 
@@ -17,7 +17,11 @@
         #endregion
 
         #region Properties
-        public string EmailorUsername { get; set; }
+        public string EmailorUsername
+        {
+            get { return this.email; }
+            set { SetValue(ref this.email, value); }
+        }
         public string Password
         {
             get { return this.password; }
@@ -68,7 +72,7 @@
 
             this.IsRunning = true;
             this.IsEnabled = false;
-            if (!this.EmailorUsername.Equals("erick@gmail.com") || this.Password.Equals("1234"))
+            if (!this.EmailorUsername.Equals("erick@gmail.com") || !this.Password.Equals("1234"))
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
@@ -82,10 +86,12 @@
 
             this.isRunning = false;
             this.IsEnabled = true;
-            await Application.Current.MainPage.DisplayAlert(
-                             "Ok",
-                             "Fuck yeah!!.",
-                             "Accept");
+
+            this.email = string.Empty;
+            this.password = string.Empty;
+
+            MainViewModel.GetInstance().Lands = new Land.LandsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new Views.Land.LandPage());
         }
 
         public ICommand RegisterCommand { get; set; }
@@ -95,6 +101,9 @@
         {
             this.IsRemembered = true;
             this.isEnabled = true;
+
+            this.EmailorUsername = "erick@gmail.com";
+            this.password = "1234";
         }
         #endregion
     }

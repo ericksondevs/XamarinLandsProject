@@ -10,7 +10,6 @@ namespace LandsXamApp
 		{
 			InitializeComponent();
             this.MainPage = new NavigationPage(new LoginPage());
-
         }
 		#endregion
 		protected override void OnStart ()

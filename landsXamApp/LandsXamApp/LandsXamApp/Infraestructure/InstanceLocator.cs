@@ -14,7 +14,7 @@
 		#region Constructors
 		public InstanceLocator()
 		{
-			this.Main  = new MainViewModel();
+		  this.Main  = new MainViewModel();
            bool result = Main.Login.IsRemembered;
         }
 		#endregion
