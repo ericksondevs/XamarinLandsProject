@@ -10,6 +10,7 @@
     using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
     using System.Linq;
+    using LandsXamApp.ViewModels.ControllersViewModel;
 
     public class LandsViewModel : ViewModelBase
     {
@@ -17,14 +18,14 @@
         private ApiService apiService;
         #endregion
         #region Attributes
-        private ObservableCollection<Land> lands;
+        private ObservableCollection<LandItemViewModel> lands;
         private bool isRefreshing;
         private string filter;
         private List<Land> landsList;
         #endregion
 
         #region Properties
-        public ObservableCollection<Land> Lands
+        public ObservableCollection<LandItemViewModel> Lands
         {
             get { return this.lands; }
             set { SetValue(ref this.lands, value); }
@@ -60,7 +61,7 @@
             if(response.IsSuccess)
             {
                 this.landsList = (List<Land>)response.Result;
-                this.Lands = new ObservableCollection<Land>(this.landsList);
+                this.Lands = new ObservableCollection<LandItemViewModel>(ToLandItemViewModel());
             }
             else
             {
@@ -68,15 +69,47 @@
             }
             this.IsRefreshing = false;
         }
+
+        private IEnumerable<LandItemViewModel> ToLandItemViewModel()
+        {
+            return this.landsList.Select(x => new LandItemViewModel {
+                Alpha2Code = x.Alpha2Code,
+                AltSpellings = x.AltSpellings,
+                Alpha3Code=x.Alpha3Code,
+                Area=x.Area,
+                Borders=x.Borders,
+                CallingCodes=x.CallingCodes,
+                Capital=x.Capital,
+                Cioc=x.Cioc,
+                Currencies=x.Currencies,
+                Demonym=x.Demonym,
+                Flag=x.Flag,
+                Gini=x.Gini,
+                Languages=x.Languages,
+                Latlng=x.Latlng,
+                Name=x.Name,
+                NativeName=x.NativeName,
+                NumericCode=x.NumericCode,
+                Population=x.Population,
+                Region=x.Region,
+                RegionalBlocs=x.RegionalBlocs,
+                Subregion=x.Subregion,
+                Timezones=x.Timezones,
+                TopLevelDomain=x.TopLevelDomain,
+                Translations=x.Translations
+                
+           });
+        }
+
         private void Search()
         {
             if (string.IsNullOrWhiteSpace(this.Filter))
             {
-                this.Lands = new ObservableCollection<Land>(this.landsList);
+                this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
             }
             else
             {
-                this.Lands = new ObservableCollection<Land>(this.landsList.Where(x => x.Name.ToLower().Contains(this.Filter.ToLower()) ||
+                this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel().Where(x => x.Name.ToLower().Contains(this.Filter.ToLower()) ||
                 x.Capital.ToLower().Contains(this.Filter.ToLower())));
             }
         }

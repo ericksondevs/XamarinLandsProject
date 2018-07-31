@@ -7,6 +7,7 @@
         #region ViewModels
         public LoginViewModel Login { get; set; }
         public LandsViewModel Lands { get; set; }
+        public LandDescriptioncsViewModel Land { get; set; }
 
         #endregion
 

@@ -6,8 +6,10 @@
              Title="Lands">
     <ContentPage.Content>
         <StackLayout  BindingContext="{Binding Lands}">
-                <SearchBar  Placeholder="Search..." Text="{Binding Filter,Mode=TwoWay}"
-                       SearchCommand="{Binding SearchCommand}"></SearchBar>
+            <SearchBar 
+                    BackgroundColor="Silver"
+                    Placeholder="Search..." Text="{Binding Filter,Mode=TwoWay}"
+                    SearchCommand="{Binding SearchCommand}"></SearchBar>
             <ListView BackgroundColor="Silver"
                 HasUnevenRows="true"
                 IsPullToRefreshEnabled="true"

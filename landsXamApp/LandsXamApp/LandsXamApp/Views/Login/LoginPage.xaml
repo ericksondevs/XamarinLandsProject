@@ -59,7 +59,11 @@
                         TextColor="White"></Button>
             </StackLayout>
             <StackLayout  VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="Center">
-                <Image Margin="5" Source="facebook_logo" WidthRequest="80"  />
+                    <Image Margin="5" Source="facebook_logo" WidthRequest="80" >
+                        <Image.GestureRecognizers >
+                            <TapGestureRecognizer Command="{Binding LoginFacebookCommand}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                 <Image Margin="5" Source="twitter_logo" WidthRequest="65"   />
                 <Image Margin="15" Source="goolgeplus_logo" WidthRequest="63" />
             </StackLayout>
